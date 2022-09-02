@@ -1,0 +1,57 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+pre {
+    font-weight: 700px; 
+}
+pre code.hljs{
+    display:block;
+    overflow-x:auto;
+    /* padding:1em */
+    font-weight: 500;
+}
+
+code.hljs {
+    /* padding:3px 5px */
+}
+.hljs {
+    margin-top: 10px;
+    background:rgb(250, 250, 250,0);
+    color:rgb(0, 0, 0)
+}
+.hljs-comment,.hljs-quote,.hljs-variable {
+    color:rgb(0, 233, 0)
+}
+.hljs-built_in,.hljs-keyword,.hljs-name,.hljs-selector-tag,.hljs-tag{
+    color:rgb(44, 44, 247)
+}
+.hljs-addition,.hljs-attribute,.hljs-literal,.hljs-section,.hljs-string,.hljs-template-tag,.hljs-template-variable,.hljs-title,.hljs-type
+{
+    color:#b31414
+}
+.hljs-deletion,.hljs-meta,.hljs-selector-attr,.hljs-selector-pseudo
+{
+    color:#2b91af
+}
+.hljs-doctag{
+    color:rgb(255, 255, 255)
+}
+.hljs-attr{
+    color:red
+}
+.hljs-bullet,.hljs-link,.hljs-symbol {
+    color:#03c4ff
+}
+.hljs-emphasis{
+    font-style:italic
+}
+.hljs-strong{
+    font-weight:400
+}
+.codeDiv {
+    margin-top: 50px;
+    width: 50%;
+    display: block;
+}
+
