@@ -5,8 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeCollect</title>
+    <link rel="shortcut icon" href="../../../static/images/app3.ico" type="image/x-icon">
+    <script src="../../../library/vue/vue.min.js"></script>
+    <style>
+        body {
+            -webkit-app-region:drag;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <img src="../../../static/images/app3.ico" alt="">
+    <div id="app" contenteditable="true">
+        <h1>{{title}}</h1>
+        <img v-bind:src="url" alt="" style="display: block; margin-left: 40%;">
+    </div>
+    
 </body>
+<script> 
+    new Vue({                   
+        el:'#app',
+        data:{
+            title:"hello",
+            hello:"你好",
+            url:"../../../static/images/app3.ico",
+            href:"../lib/appStart.js"
+        }
+    });
+    let time = setTimeout(function(){
+        let div = document.querySelector('h1');
+        div.innerText="你好啊"
+    },2000);
+    
+</script>
 </html>

@@ -2,14 +2,15 @@
   "name": "CodeCollect",
   "version": "1.0.0",
   "description": "> An electron-vue project",
-  "main": "index.js",
+  "main": "src/main/main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"chcp 65001 &&electron .",
+    "start_test":"electron ."
   },
-  "type": "module",
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "adm-zip": "^0.5.9",
     "electron": "^20.0.2",
