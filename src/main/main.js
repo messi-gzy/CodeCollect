@@ -15,20 +15,20 @@ const {
     globalShortcut,
     nativeImage,
     screen
-} = require ('electron')//electron
+} = require('electron')//electron
 
-const log = require ('electron-log')//log日志
-const Store = require ('electron-store')//store配置文件
-const path =require ('path')//路径设置
+const log = require('electron-log')//log日志
+const Store = require('electron-store')//store配置文件
+const path = require('path')//路径设置
 
 /**
  * 全局变量
  */
 let store = new Store() //store
 
-let screenSize={//窗口大小
-    width:0,
-    height:0
+let screenSize = {//窗口大小
+    width: 0,
+    height: 0
 }
 
 
@@ -37,31 +37,31 @@ let screenSize={//窗口大小
  * 启动设置
  */
 app.on('ready', () => {
-    mainWindow = new BrowserWindow({
+    let mainWindow = new BrowserWindow({
         width: 1000,
         height: 700,
-        minWidth:1000,
-        minHeight:700,
-        frame: false,
-        alwaysOnTop:false,//是否永远在其他窗口之上
-        skipTaskbar:false,
-        resizable:true,//窗口调节
-        // opacity:1,//窗口透明度
-        transparent:false,
-        icon: path.join(__dirname,"../../static/images/app3.ico") ,
-        webPreferences:{//nodejs使用
-            nodeIntegration:true,
-            contextIsolation:false,
-            webviewTag:true
+        minWidth: 1000,
+        minHeight: 700,
+        frame: true,
+        alwaysOnTop: false,//是否永远在其他窗口之上
+        skipTaskbar: false,
+        resizable: true,//窗口调节
+        opacity: 1,//窗口透明度
+        transparent: false,
+        icon: path.join(__dirname, "../../static/images/app3.ico"),
+        webPreferences: {//nodejs使用
+            nodeIntegration: true,
+            contextIsolation: false,
+            webviewTag: true
         },
     })
-    mainWindow.loadFile(path.join(__dirname,'../renderer/app/app.html'))
+    mainWindow.loadFile(path.join(__dirname, '../renderer/app/app.html'))
     mainWindow.on('closed', () => {
         mainWindow = null
     })
     //屏幕尺寸
     const primaryDisplay = screen.getPrimaryDisplay()
-    const { width, height } = primaryDisplay.workAreaSize
-    screenSize.width=width;
-    screenSize.height=height
+    const {width, height} = primaryDisplay.workAreaSize
+    screenSize.width = width;
+    screenSize.height = height
 });
