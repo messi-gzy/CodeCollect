@@ -8,12 +8,12 @@ const {
     ipcMain,
     dialog,
     Notification,
-    desktopCapturer,
     clipboard,
     Tray,
     shell,
     globalShortcut,
     nativeImage,
+    desktopCapturer,
     screen
 } = require('electron')//electron
 
@@ -48,7 +48,7 @@ app.on('ready', () => {
         resizable: true,//窗口调节
         opacity: 1,//窗口透明度
         transparent: false,
-        icon: path.join(__dirname, "../../static/images/app3.ico"),
+        icon: path.join(__dirname, "../../static/images/app2.ico"),
         webPreferences: {//nodejs使用
             nodeIntegration: true,
             contextIsolation: false,

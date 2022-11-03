@@ -1,0 +1,10 @@
+{
+  "name": "static",
+  "author": "MaXin",
+  "version": "1.0.0",
+  "type": "theme",
+  "time": "",
+  "themes": [
+    "./static.css"
+  ]
+}
