@@ -4,3 +4,9 @@
  * @description 渲染页面与主程序的通信内容
  * @date 2022/11/3
  */
+
+const {
+    ipcMain
+} = require('electron');
+
+ipcMain.on()

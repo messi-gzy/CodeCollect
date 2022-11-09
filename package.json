@@ -24,6 +24,7 @@
     "node-cmd": "^5.0.0",
     "qr-image": "^3.2.0",
     "request": "^2.88.2",
-    "simple-git": "^3.10.0"
+    "simple-git": "^3.10.0",
+    "sqlite3":"^5.1.2"
   }
 }

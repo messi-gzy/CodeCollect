@@ -6,8 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeCollect</title>
     <link rel="shortcut icon" href="../../../static/images/app3.ico" type="image/x-icon">
-    <script src="../../../library/jquery/jquery-3.5.1.js"></script>
-    <script src="../../../library/vue/vue.min.js"></script>
+    <script src="../../../static/library/jquery/jquery-3.5.1.js"></script>
+    <script src="../../../static/library/vue/vue.js"></script>
+    <script src="../lib/frameStart.js"></script>
+    <script src="../lib/frameLayout.js"></script>
+    <script src="../lib/frameControl.js"></script>
+    <script src="../lib/frameScripts.js"></script>
+    <script src="../lib/frameShortcutKey.js"></script>
+    <script src="../lib/frameWebView.js"></script>
+    <script src="../lib/frameTopMenu.js"></script>
+    <script src="../lib/frameTabBar.js"></script>
+    <script src="../lib/frameNotice.js"></script>
+    <script src="../lib/frameShowPage.js"></script>
+    <script src="../lib/frameMessage.js"></script>
+    <script src="../lib/frameMiddleware.js"></script>
     <style>
         body {
             -webkit-app-region:drag;
@@ -16,7 +28,7 @@
     </style>
 </head>
 <body>
-    <div id="app" contenteditable="true">
+    <div id="app">
         <h1>{{title}}</h1>
         <img v-bind:src="url" alt="" style="display: block; margin-left: 40%;">
     </div>
@@ -34,8 +46,11 @@
     });
     let time = setTimeout(function(){
         let div = document.querySelector('h1');
-        div.innerText="你好啊"
+        div.innerText="CodeCollect"
     },2000);
-    
+    let time1 = setTimeout(function(){
+        let div = document.querySelector('h1');
+        div.innerText="API参考"
+    },20000);
 </script>
 </html>
