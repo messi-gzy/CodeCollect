@@ -16,55 +16,53 @@ const {
     desktopCapturer,
     Menu,
     screen
-} = require('electron')//electron
+} = require('electron');//electron
 
-const log = require('electron-log')//log日志
-const Store = require('electron-store')//store配置文件
-const path = require('path')
+const log = require('electron-log');//log日志
+const Store = require('electron-store');//store配置文件
+const path = require('path');
 //路径设置
 
 const {
-    appWindow,
+    appWindowEvent,
     appWindowControl
-} = require('./lib/appWindow')
+} = require('./lib/appWindow');
 
 /**
  * 全局变量
  */
-let store = new Store() //store
+let store = new Store(); //store
 let mainWindow = null;
 //窗口大小
 let screenSize = {
     width: 0,
     height: 0
-}
+};
+let processArgv = [];
 
 /**
  * 启动设置
  */
 app.on('ready', () => {
-   createWindow()
-});
+    // 创建窗口
+    createWindow();
+    processArgv = process.argv;
+})
 app.whenReady().then(() => {
-    // 注册一个'CommandOrControl+X' 快捷键监听器
     const ret = globalShortcut.register('Ctrl+X', () => {
         appWindowControl.minApp(mainWindow);
     })
-
     if (!ret) {
-        console.log('registration failed')
+        console.log('registration failed');
     }
-
-    // 检查快捷键是否注册成功
-    console.log(globalShortcut.isRegistered('CommandOrControl+X'))
+    console.log(globalShortcut.isRegistered('Ctrl+X'));
 })
-
+/**
+ * 将要退出时
+ */
 app.on('will-quit', () => {
-    // 注销快捷键
-    globalShortcut.unregister('Ctrl+X')
-
-    // 注销所有快捷键
-    globalShortcut.unregisterAll()
+    globalShortcut.unregister('Ctrl+X');
+    globalShortcut.unregisterAll();
 })
 /**
  * 软件退出设置
@@ -73,12 +71,16 @@ app.on("quit", () => {
 
 })
 
-function createWindow(){
+/***
+ * 创造主窗口，监听窗口变化事件并返回需要值
+ * 详细规划
+ */
+function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1000,
         height: 700,
-        minWidth: 1000,
-        minHeight: 700,
+        minWidth: 500,
+        minHeight: 400,
         frame: true,
         alwaysOnTop: false,//是否永远在其他窗口之上
         skipTaskbar: false,
@@ -97,16 +99,42 @@ function createWindow(){
         .then(r => function () {
             log.info(r)
         })
-    appWindow.closeWindow(mainWindow) // 关闭窗口
-    appWindow.sessionEnd(mainWindow) // 因为强制关机或机器重启或会话注销而导致窗口会话结束时触发
-    appWindow.hideWindow(mainWindow) // 窗口隐藏触发
-    appWindow.showWindow(mainWindow) // 窗口显示触发
-    appWindow.minWindow(mainWindow) // 最小化触发
-    appWindow.maxWindow(mainWindow) // 最大化触发
+    appWindowEvent.closeWindow(mainWindow) // 关闭窗口
+    appWindowEvent.sessionEnd(mainWindow) // 因为强制关机或机器重启或会话注销而导致窗口会话结束时触发
+    appWindowEvent.hideWindow(mainWindow) // 窗口隐藏触发
+    appWindowEvent.showWindow(mainWindow) // 窗口显示触发
+    appWindowEvent.minWindow(mainWindow) // 最小化触发
+    appWindowEvent.maxWindow(mainWindow) // 最大化触发
     //屏幕尺寸
     const primaryDisplay = screen.getPrimaryDisplay()
     const {width, height} = primaryDisplay.workAreaSize
     screenSize.width = width;
     screenSize.height = height;
 }
+
+ipcMain.on('windows', (event, args) => {
+    // return ipcRenderer.sendSync("syncIpc",sendSyncMessage);
+    //  event.sender.send("keyReplyShortcuts",args)
+    let arg = args[0];
+    switch (arg) {
+        case 'close':
+            appWindowControl.closeApp();
+            break;
+        case 'minimize':
+            appWindowControl.minApp(mainWindow);
+            break;
+        case 'maximize':
+            appWindowControl.maxApp(mainWindow);
+            break;
+        case 'show':
+            appWindowControl.showApp();
+            break;
+        case 'hide':
+            appWindowControl.hideApp();
+            break;
+        default:
+            log.info("warning")
+            break;
+    }
+})
 

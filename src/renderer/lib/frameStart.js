@@ -10,6 +10,9 @@
  * ⑥、加载插件，插入第三方页面框架
  * @date 2022/11/3
  */
+
+
+/*
 const fs = require('fs')
 const path = require('path')
 const request = require('request')
@@ -21,3 +24,5 @@ let store = new Store() //store
 const log = require('electron-log')
 
 log.info("start")
+*/
+svg._data.title = "修改成功耶！！！"

@@ -50,35 +50,35 @@ const appWindowControl = {
 // 显示窗口触发
 function showWindow(mainWindow) {
     mainWindow.on('show', () => {
-        log.info("show")
+
     })
 }
 
 // 最大化窗口触发
 function maxWindow(mainWindow) {
     mainWindow.on('maximize', () => {
-        log.info("max")
+
     })
 }
 
 // 最小化窗口触发
 function minWindow(mainWindow) {
     mainWindow.on('minimize', () => {
-        log.info("max")
+        mainWindow.webContents.send("change","HelloWorld")
     })
 }
 
 // 隐藏窗口触发
 function hideWindow(mainWindow) {
     mainWindow.on('hide', () => {
-        log.info("hide")
+
     })
 }
 
 // 因为强制关机或机器重启或会话注销而导致窗口会话结束时触发
 function sessionEnd(mainWindow) {
     mainWindow.on('session-end', () => {
-
+        log.info("session")
     })
 }
 
@@ -90,7 +90,7 @@ function closeWindow(mainWindow) {
     })
 }
 
-const appWindow = {
+const appWindowEvent = {
     showWindow: showWindow,
     maxWindow: maxWindow,
     minWindow: minWindow,
@@ -99,8 +99,7 @@ const appWindow = {
     closeWindow: closeWindow
 }
 
-
 exports = module.exports = {
-    appWindow,
+    appWindowEvent,
     appWindowControl
 }
