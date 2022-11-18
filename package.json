@@ -5,8 +5,8 @@
   "main": "src/main/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"chcp 65001 &&electron .",
-    "start_test":"electron ."
+    "start": "chcp 65001 &&electron .",
+    "start_test": "electron ."
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
     "qr-image": "^3.2.0",
     "request": "^2.88.2",
     "simple-git": "^3.10.0",
-    "sqlite3":"^5.1.2"
+    "sound-play": "^1.1.0",
+    "sqlite3": "^5.1.2"
   }
 }
